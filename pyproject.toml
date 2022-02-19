@@ -1,0 +1,46 @@
+[tool.poetry]
+name = "scadi"
+version = "0.1.0"
+description = "SCAD Inliner: Roll up OpenSCAD includes into the main file for easy sharing."
+keywords = ["openscad", "inline", "minimizer", "rollup", "scad"]
+homepage = "https://nascentmaker.com/py/scadi"
+repository = "https://github.com/NascentMaker/scadi"
+authors = ["Nascent Maker <hello@nascentmaker.com>"]
+maintainers = ["Nascent Maker <hello@nascentmaker.com>", "Torgny Bjers <torgny@hey.com>"]
+license = "MIT"
+readme = "README.rst"
+packages = [
+    { include =  "scadi" }
+]
+include = ["README.rst"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: Implementation :: CPython"
+]
+
+[tool.poetry.scripts]
+scadi = "scadi.main:main"
+
+[tool.poetry.plugins."cliff.scadi"]
+inline = "scadi.inline:Inline"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+cliff = "^3.10.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
