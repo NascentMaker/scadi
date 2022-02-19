@@ -38,7 +38,7 @@ class ScadiApp(App):
         :returns: None
 
         """
-        self.LOG.debug(f"prepare to run command {cmd.__class__.__name__}")
+        self.LOG.debug("prepare to run command %s", cmd.__class__.__name__)
 
     def clean_up(self, cmd, _, err) -> None:
         """Clean up after running the command.
@@ -48,12 +48,12 @@ class ScadiApp(App):
         :returns: None
 
         """
-        self.LOG.debug(f"clean_up {cmd.__class__.__name__}")
+        self.LOG.debug("clean_up %s", cmd.__class__.__name__)
         if err:
-            self.LOG.error(f"got an error: {err}")
+            self.LOG.error("got an error: %s", err)
 
 
-def main(argv=None) -> any:
+def main(argv=None) -> object:
     """Main script entry point.
 
     :param argv: Commandline arguments

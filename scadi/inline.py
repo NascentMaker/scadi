@@ -37,7 +37,7 @@ class Inline(Command):
             self.log.debug(basename)
             self.filenames.append(basename)
             with open(filename, mode="r", encoding="utf-8") as infile:
-                self.log.debug(f"opening {filename}...")
+                self.log.debug("opening %s...", filename)
                 directory = os.path.dirname(filename)
                 for line in infile.readlines():
                     if self.statement_regex.match(line.lstrip().rstrip()):

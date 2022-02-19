@@ -1,3 +1,5 @@
+"""Entry point for cliff CLI application"""
+
 import sys
 
 from scadi.main import main
