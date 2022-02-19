@@ -8,12 +8,14 @@ Installation
 ============
 
 ::
+
    pip3 install scadi
 
 Usage
 =====
 
 ::
+
    scadi inline ./my-model.scad
 
 The above command will create a file called ``./inline-my-model.scad`` that can be shared on sites that have OpenSCAD customizers.
