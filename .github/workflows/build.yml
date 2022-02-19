@@ -39,4 +39,4 @@ jobs:
           poetry run pip install pylint
       - name: Analyze project with pylint
         run: |
-          pylint $(git ls-files '*.py')
+          poetry run pylint $(git ls-files '*.py')
