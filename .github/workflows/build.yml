@@ -1,6 +1,6 @@
 name: Build
 
-on: [push]
+'on': [push]
 
 jobs:
   build:
@@ -10,20 +10,20 @@ jobs:
         python-version: ["3.8", "3.9", "3.10"]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install Poetry
         run: |
-          curl -fsS -o get-poetry.py https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
+          curl -fsS -o get-poetry.py https://install.python-poetry.org/
           python get-poetry.py -y
           echo "$HOME/.poetry/bin" >> $GITHUB_PATH
       - name: Configure Poetry
         run: poetry config virtualenvs.in-project true
       - name: Set up cache
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@v3
         id: cache
         with:
           path: .venv
