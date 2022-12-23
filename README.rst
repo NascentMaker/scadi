@@ -28,4 +28,6 @@ Support me
 
 If you found that this tool saved you some time and you want to give back, please consider using Ko-Fi to buy me a coffee.
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/S6S7GJUG3)
+.. image:: https://ko-fi.com/img/githubbutton_sm.svg
+   :target: https://ko-fi.com/S6S7GJUG3
+   :alt: ko-fi
