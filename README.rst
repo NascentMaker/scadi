@@ -1,5 +1,6 @@
 .. image:: https://static.pepy.tech/personalized-badge/scadi?period=month&units=international_system&left_color=black&right_color=orange&left_text=downloads/month
- :target: https://pepy.tech/project/scadi
+   :target: https://pepy.tech/project/scadi
+   :alt: downloads/month
 
 =====
 scadi
