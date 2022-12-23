@@ -22,3 +22,10 @@ Usage
    scadi inline ./my-model.scad
 
 The above command will create a file called ``./inline-my-model.scad`` that can be shared on sites that have OpenSCAD customizers.
+
+Support me
+==========
+
+If you found that this tool saved you some time and you want to give back, please consider using Ko-Fi to buy me a coffee.
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/S6S7GJUG3)
