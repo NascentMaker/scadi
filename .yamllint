@@ -1,0 +1,29 @@
+---
+# file: .yamllint
+# Local Variables:
+# mode: yaml
+# End:
+ignore: |
+  **/templates/*.yaml
+  **/templates/tests/*.yaml
+
+extends: default
+
+yaml-files:
+  - "*.yaml"
+  - "*.yml"
+  - .yamllint
+  - .yamllint.yml
+
+rules:
+  comments-indentation:
+    level: error
+  document-start:
+    level: warning
+  line-length:
+    max: 120
+    allow-non-breakable-words: true
+    allow-non-breakable-inline-mappings: true
+  octal-values: enable
+  truthy:
+    level: error
