@@ -76,6 +76,5 @@ class Inline(Command):
             if isinstance(ex, FileNotFoundError):
                 self.log.error("No such file or directory.")
                 return 127
-            else:
-                self.log.error("Please enter a filename.")
-                return 1
+            self.log.error("Please enter a filename.")
+            return 1

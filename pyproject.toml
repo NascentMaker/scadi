@@ -59,3 +59,12 @@ testpaths = [
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pylint.main]
+fail-under = 10
+jobs = 0
+py-version = "3.8"
+
+[tool.pylint.format]
+ignore-long-lines = "^\\s*(# )?<?https?://\\S+>?$"
+max-line-length = 120

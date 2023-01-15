@@ -1,7 +1,7 @@
 """Test Inline functionality"""
+# pylint: disable=W0621
 
 import pytest
-from pathlib import PosixPath
 
 from scadi.inline import Inline
 
@@ -39,7 +39,8 @@ def working_model_file(base_dir, working_base_library_file):
     """
     file_path = base_dir / "working_model.scad"
     file_path.write_text(
-        f'the_question = "What is the meaning of life, the universe, and everything?";\nuse <libraries/{working_base_library_file.name}>;'
+        f"""the_question = "What is the meaning of life, the universe, and everything?";
+        use <libraries/{working_base_library_file.name}>;"""
     )
     return file_path
 
