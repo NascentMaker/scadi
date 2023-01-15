@@ -5,7 +5,7 @@ import os
 from scadi.inline import Inline
 
 
-def test_scan_file(tmp_path):
+def test_scan_file_simple(tmp_path):
     """Test scan_file function
 
     :param tmp_path PosixPath
