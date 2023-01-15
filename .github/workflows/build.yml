@@ -37,3 +37,6 @@ jobs:
       - name: Analyze project with pylint
         run: |
           poetry run pylint $(git ls-files '*.py')
+      - name: Run tests
+        run: |
+          poetry run tox
