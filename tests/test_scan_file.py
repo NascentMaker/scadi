@@ -1,8 +1,9 @@
 """Test Inline functionality"""
 
-from scadi.inline import Inline
-
 import pytest
+from pathlib import PosixPath
+
+from scadi.inline import Inline
 
 
 @pytest.fixture(scope="session")
@@ -86,7 +87,7 @@ def test_existing_file(base_dir, working_model_file):
     )
 
 
-def test_no_filename(base_dir, working_model_file):
+def test_no_filename():
     """Test with empty arguments
 
     :param base_dir PosixPath
@@ -96,7 +97,7 @@ def test_no_filename(base_dir, working_model_file):
     cmd = Inline(None, None, cmd_name="object action")
     parser = cmd.get_parser("scadi")
     parsed_args = parser.parse_args([])
-    assert cmd.run(parsed_args) == 0
+    assert cmd.run(parsed_args) == 1
 
 
 def test_bad_filename(base_dir):
@@ -109,4 +110,4 @@ def test_bad_filename(base_dir):
     parser = cmd.get_parser("scadi")
     filename = base_dir / "missing_file.scad"
     parsed_args = parser.parse_args([f"{filename}"])
-    assert cmd.run(parsed_args) == 0
+    assert cmd.run(parsed_args) == 127
