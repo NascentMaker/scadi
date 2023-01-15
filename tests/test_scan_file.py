@@ -2,8 +2,6 @@
 
 from scadi.inline import Inline
 
-import os
-from pathlib import PosixPath
 import pytest
 
 
@@ -14,8 +12,8 @@ def base_dir(tmp_path_factory):
     :param tmp_path_factory TempPathFactory
 
     """
-    d = tmp_path_factory.mktemp("models-")
-    return d
+    dir_path = tmp_path_factory.mktemp("models-")
+    return dir_path
 
 
 @pytest.fixture(scope="session")
@@ -25,9 +23,9 @@ def library_dir(base_dir):
     :param base_dir PosixPath
 
     """
-    d = base_dir / "libraries"
-    d.mkdir()
-    return d
+    dir_path = base_dir / "libraries"
+    dir_path.mkdir()
+    return dir_path
 
 
 @pytest.fixture
@@ -38,11 +36,11 @@ def working_model_file(base_dir, working_base_library_file):
     :param working_base_library_file PosixPath
 
     """
-    fp = base_dir / "working_model.scad"
-    fp.write_text(
+    file_path = base_dir / "working_model.scad"
+    file_path.write_text(
         f'the_question = "What is the meaning of life, the universe, and everything?";\nuse <libraries/{working_base_library_file.name}>;'
     )
-    return fp
+    return file_path
 
 
 @pytest.fixture
@@ -53,9 +51,9 @@ def working_base_library_file(library_dir, working_referenced_library_file):
     :param working_referenced_library_file PosixPath
 
     """
-    fp = library_dir / "working_base_library.scad"
-    fp.write_text(f"use <{working_referenced_library_file.name}>;\n")
-    return fp
+    file_path = library_dir / "working_base_library.scad"
+    file_path.write_text(f"use <{working_referenced_library_file.name}>;\n")
+    return file_path
 
 
 @pytest.fixture
@@ -65,9 +63,9 @@ def working_referenced_library_file(library_dir):
     :param library_dir PosixPath
 
     """
-    fp = library_dir / "working_referenced_library.scad"
-    fp.write_text("the_answer = 42;\n")
-    return fp
+    file_path = library_dir / "working_referenced_library.scad"
+    file_path.write_text("the_answer = 42;\n")
+    return file_path
 
 
 def test_existing_file(base_dir, working_model_file):
