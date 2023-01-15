@@ -1,10 +1,16 @@
+"""Test Inline functionality"""
+
 import os
-import pytest
 
 from scadi.inline import Inline
 
 
 def test_scan_file(tmp_path):
+    """Test scan_file function
+
+    :param tmp_path PosixPath
+
+    """
     infile = os.path.abspath("tests/samples/model.scad")
     cmd = Inline(None, None)
     directory = tmp_path / "dist"
