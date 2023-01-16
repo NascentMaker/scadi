@@ -37,7 +37,7 @@ inline = "scadi.inline:Inline"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-cliff = "^3.10.0"
+cliff = ">=3.10,<5.0"
 
 [tool.poetry.group.dev.dependencies]
 pylint = "^2.15.10"
