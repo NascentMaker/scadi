@@ -1,4 +1,4 @@
-|pypiversion| |pypiwheel| |pypipyversions| |pypilicense| |pypidownloads| |precommit|
+|pypiversion| |pypiwheel| |pypipyversions| |pypilicense| |pypidownloads| |precommit| |coverage| |maintainability|
 
 =====
 scadi
@@ -76,3 +76,11 @@ If you found that this tool saved you some time and you want to give back, pleas
 .. |precommit| image:: https://results.pre-commit.ci/badge/github/NascentMaker/scadi/main.svg
    :target: https://results.pre-commit.ci/latest/github/NascentMaker/scadi/main
    :alt: pre-commit.ci status
+
+.. |coverage| image:: https://img.shields.io/codeclimate/coverage/NascentMaker/scadi
+   :target: https://codeclimate.com/github/NascentMaker/scadi
+   :alt: Code Climate coverage
+
+.. |maintainability| image:: https://img.shields.io/codeclimate/maintainability/NascentMaker/scadi
+   :target: https://codeclimate.com/github/NascentMaker/scadi
+   :alt: Code Climate maintainability
