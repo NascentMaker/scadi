@@ -62,6 +62,8 @@ jobs:
           poetry run pylint $(git ls-files '*.py')
 
       - name: Run tests
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         run: |
           ./cc-test-reporter before-build
           poetry run tox
