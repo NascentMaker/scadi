@@ -1,4 +1,5 @@
-|pypiversion| |pypiwheel| |pypipyversions| |pypilicense| |pypidownloads| |precommit| |coverage| |maintainability|
+| |pypiversion| |pypiwheel| |pypipyversions| |pypilicense| |pypidownloads|
+| |precommit| |coverage| |maintainability|
 
 =====
 scadi
