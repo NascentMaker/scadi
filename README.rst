@@ -1,4 +1,4 @@
-|pypiversion| |pypiwheel| |pypipyversions| |pypilicense| |pypidownloads|
+|pypiversion| |pypiwheel| |pypipyversions| |pypilicense| |pypidownloads| |precommit|
 
 =====
 scadi
@@ -67,3 +67,7 @@ If you found that this tool saved you some time and you want to give back, pleas
 
 .. |pypidownloads| image:: https://img.shields.io/pypi/dm/scadi
    :alt: PyPI - Downloads
+
+.. |precommit| image:: https://results.pre-commit.ci/badge/github/NascentMaker/scadi/main.svg
+   :target: https://results.pre-commit.ci/latest/github/NascentMaker/scadi/main
+   :alt: pre-commit.ci status

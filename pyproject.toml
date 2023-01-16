@@ -12,7 +12,7 @@ readme = "README.rst"
 packages = [
     { include =  "scadi" }
 ]
-include = ["README.rst"]
+include = ["README.rst", "LICENSE"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
@@ -39,9 +39,32 @@ inline = "scadi.inline:Inline"
 python = "^3.8"
 cliff = "^3.10.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pylint = "^2.15.10"
+pytest = "^7.2.1"
+tox = "^4.2.8"
+coverage = "^7.0.5"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = [
+    "--import-mode=importlib",
+    "-ra",
+    "-q",
+]
+testpaths = [
+    "tests",
+]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pylint.main]
+fail-under = 10
+jobs = 0
+py-version = "3.8"
+
+[tool.pylint.format]
+ignore-long-lines = "^\\s*(# )?<?https?://\\S+>?$"
+max-line-length = 120

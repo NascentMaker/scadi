@@ -6,6 +6,7 @@ import os
 import re
 
 from cliff.command import Command
+from cliff._argparse import ArgumentParser
 
 
 class Inline(Command):
@@ -16,7 +17,7 @@ class Inline(Command):
     filenames = []
     statement_regex = re.compile("(use|include) <[^>]+>")
 
-    def get_parser(self, prog_name) -> object:
+    def get_parser(self, prog_name) -> ArgumentParser:
         """Set up and return the parser.
 
         :param prog_name: name of program
@@ -50,7 +51,7 @@ class Inline(Command):
                     else:
                         self.outfile.write(line.rstrip() + "\n")
 
-    def take_action(self, parsed_args) -> None:
+    def take_action(self, parsed_args) -> int:
         """Perform action on file
 
         :param parsed_args: structure of parsed arguments
@@ -62,7 +63,7 @@ class Inline(Command):
             infile = os.path.abspath(parsed_args.filename)
             if not os.path.exists(infile):
                 self.log.error("No such file or directory.")
-                return
+                return 127
             directory = os.path.dirname(infile)
             with open(
                 os.path.join(directory, f"inline-{os.path.basename(infile)}"),
@@ -70,8 +71,10 @@ class Inline(Command):
                 encoding="utf-8",
             ) as self.outfile:
                 self.scan_file(infile)
+                return 0
         except (FileNotFoundError, TypeError) as ex:
             if isinstance(ex, FileNotFoundError):
                 self.log.error("No such file or directory.")
-            else:
-                self.log.error("Please enter a filename.")
+                return 127
+            self.log.error("Please enter a filename.")
+            return 1
