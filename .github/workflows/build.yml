@@ -38,3 +38,7 @@ jobs:
       - name: Run tests
         run: |
           poetry run tox
+      - name: Pytest coverage comment
+        uses: MishaKav/pytest-coverage-comment@main
+        with:
+          pytest-xml-coverage-path: ./coverage.xml
