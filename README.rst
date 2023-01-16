@@ -54,18 +54,23 @@ If you found that this tool saved you some time and you want to give back, pleas
    :alt: ko-fi
 
 .. |pypiversion| image:: https://img.shields.io/pypi/v/scadi
+   :target: https://pypi.org/project/scadi/
    :alt: PyPI
 
 .. |pypipyversions| image:: https://img.shields.io/pypi/pyversions/scadi
+   :target: https://pypi.org/project/scadi/
    :alt: PyPI - Python Version
 
 .. |pypiwheel| image:: https://img.shields.io/pypi/wheel/scadi
+   :target: https://pypi.org/project/scadi/
    :alt: PyPI - Wheel
 
 .. |pypilicense| image:: https://img.shields.io/pypi/l/scadi
+   :target: https://pypi.org/project/scadi/
    :alt: PyPI - License
 
 .. |pypidownloads| image:: https://img.shields.io/pypi/dm/scadi
+   :target: https://pypi.org/project/scadi/
    :alt: PyPI - Downloads
 
 .. |precommit| image:: https://results.pre-commit.ci/badge/github/NascentMaker/scadi/main.svg
