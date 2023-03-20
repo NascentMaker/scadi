@@ -1,7 +1,5 @@
 {
-    "editor.formatOnSave": true,
-    "python.formatting.provider": "black",
-    "conventionalCommits.scopes": [
-        "vscode"
-    ]
+  "editor.formatOnSave": true,
+  "python.formatting.provider": "black",
+  "conventionalCommits.scopes": ["vscode", "pre-commit"]
 }
