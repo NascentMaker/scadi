@@ -65,9 +65,11 @@ class Inline(Command):
                 directory = os.path.dirname(filename)
                 for line in infile.readlines():
                     if self.statement_regex.match(line.lstrip().rstrip()):
-                        incl_file = line[line.index("<") + 1 : line.index(">")]
-                        if file_path := self.get_file_path(directory, incl_file):
-                            self.scan_file(file_path)
+                        incl_file = self.get_file_path(
+                            directory, line[line.index("<") + 1 : line.index(">")]
+                        )
+                        if incl_file:
+                            self.scan_file(incl_file)
                     else:
                         self.outfile.write(line.rstrip() + "\n")
 
