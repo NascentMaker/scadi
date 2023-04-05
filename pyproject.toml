@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "scadi"
-version = "0.1.4"
+version = "0.1.5"
 description = "SCAD Inliner: Roll up OpenSCAD includes into the main file for easy sharing."
 keywords = ["openscad", "inline", "minimizer", "rollup", "scad"]
 homepage = "https://nascentmaker.com/py/scadi"
