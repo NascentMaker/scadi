@@ -50,6 +50,20 @@ class Inline(Command):
             return os.path.abspath(os.path.join(LIBRARY_DIR, file_path))
         return self.get_file_path(None, os.path.join(base_path, file_path))
 
+    def find_include_path(self, line, directory) -> str:
+        """Find the first match in a line.
+
+        :param line: str -- Line to search
+        :param directory: str -- Relative or absolute path to base directory
+        :returns: str -- Matched string
+
+        """
+        if self.statement_regex.search(line.lstrip().rstrip()):
+            incl_file = line[line.index("<") + 1 : line.index(">")]
+            if file_path := self.get_file_path(directory, incl_file):
+                return file_path
+        return None
+
     def scan_file(self, filename) -> None:
         """Scan a file for include and use statements.
 
@@ -64,12 +78,9 @@ class Inline(Command):
                 self.log.debug("opening %s...", filename)
                 directory = os.path.dirname(filename)
                 for line in infile.readlines():
-                    if self.statement_regex.match(line.lstrip().rstrip()):
-                        incl_file = self.get_file_path(
-                            directory, line[line.index("<") + 1 : line.index(">")]
-                        )
-                        if incl_file:
-                            self.scan_file(incl_file)
+                    incl_file = self.find_include_path(line, directory)
+                    if incl_file:
+                        self.scan_file(incl_file)
                     else:
                         self.outfile.write(line.rstrip() + "\n")
 
