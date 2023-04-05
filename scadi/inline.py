@@ -46,10 +46,9 @@ class Inline(Command):
             return None
         if os.path.isfile(file_path):
             return os.path.abspath(file_path)
-        elif os.path.isfile(os.path.join(LIBRARY_DIR, file_path)):
+        if os.path.isfile(os.path.join(LIBRARY_DIR, file_path)):
             return os.path.abspath(os.path.join(LIBRARY_DIR, file_path))
-        else:
-            return self.get_file_path(None, os.path.join(base_path, file_path))
+        return self.get_file_path(None, os.path.join(base_path, file_path))
 
     def scan_file(self, filename) -> None:
         """Scan a file for include and use statements.
