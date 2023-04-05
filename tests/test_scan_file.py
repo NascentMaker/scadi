@@ -1,4 +1,8 @@
-"""Test Inline functionality"""
+"""
+ Copyright 2021 Torgny Bjers <torgny@bjers.org>.
+ SPDX-License-Identifier: MIT
+
+Test Inline functionality"""
 # pylint: disable=W0621
 
 import pytest
@@ -54,7 +58,7 @@ def working_base_library_file(library_dir, working_referenced_library_file):
 
     """
     file_path = library_dir / "working_base_library.scad"
-    file_path.write_text(f"use <{working_referenced_library_file.name}>;\n")
+    file_path.write_text(f"use <{working_referenced_library_file.name}>\n")
     return file_path
 
 

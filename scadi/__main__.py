@@ -1,4 +1,8 @@
-"""Entry point for cliff CLI application"""
+"""
+ Copyright 2021 Torgny Bjers <torgny@bjers.org>.
+ SPDX-License-Identifier: MIT
+
+Entry point for cliff CLI application"""
 
 import sys
 

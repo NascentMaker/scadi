@@ -1,4 +1,8 @@
-"""pytest tests for Inline class"""
+"""
+ Copyright 2021 Torgny Bjers <torgny@bjers.org>.
+ SPDX-License-Identifier: MIT
+
+pytest tests for Inline class"""
 
 from scadi.inline import Inline
 
