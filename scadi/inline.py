@@ -1,4 +1,8 @@
-"""Cliff command module for the Inline command"""
+"""
+ Copyright 2021 Torgny Bjers <torgny@bjers.org>.
+ SPDX-License-Identifier: MIT
+
+Cliff command module for the Inline command"""
 
 import io
 import logging
@@ -7,6 +11,9 @@ import re
 
 from cliff.command import Command
 from cliff._argparse import ArgumentParser
+from platformdirs import user_documents_path
+
+LIBRARY_DIR = os.path.join(user_documents_path(), "OpenSCAD", "libraries")
 
 
 class Inline(Command):
@@ -27,6 +34,23 @@ class Inline(Command):
         parser.add_argument("filename", nargs="?")
         return parser
 
+    def get_file_path(self, base_path, file_path) -> str:
+        """Determine file include file location.
+
+        :param base_path: str -- Relative or absolute path to base directory
+        :param file_path: str -- Relative or absolute path to file
+        :returns: str -- The absolute path to the file
+
+        """
+        if not file_path:
+            return None
+        if os.path.isfile(file_path):
+            return os.path.abspath(file_path)
+        elif os.path.isfile(os.path.join(LIBRARY_DIR, file_path)):
+            return os.path.abspath(os.path.join(LIBRARY_DIR, file_path))
+        else:
+            return self.get_file_path(None, os.path.join(base_path, file_path))
+
     def scan_file(self, filename) -> None:
         """Scan a file for include and use statements.
 
@@ -42,11 +66,8 @@ class Inline(Command):
                 directory = os.path.dirname(filename)
                 for line in infile.readlines():
                     if self.statement_regex.match(line.lstrip().rstrip()):
-                        incl_file = os.path.join(
-                            directory, line[line.index("<") + 1 : line.index(">")]
-                        )
-                        if os.path.isfile(incl_file):
-                            file_path = os.path.abspath(incl_file)
+                        incl_file = line[line.index("<") + 1 : line.index(">")]
+                        if file_path := self.get_file_path(directory, incl_file):
                             self.scan_file(file_path)
                     else:
                         self.outfile.write(line.rstrip() + "\n")

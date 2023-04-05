@@ -1,2 +1,1 @@
-include <libraries/constants.scad>
-use <libraries/library1.scad>
+use <BOSL2/std.scad>
