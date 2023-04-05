@@ -1,4 +1,8 @@
-"""Cliff application class for Scadi."""
+"""
+ Copyright 2021 Torgny Bjers <torgny@bjers.org>.
+ SPDX-License-Identifier: MIT
+
+Cliff application class for Scadi."""
 
 import sys
 from pkg_resources import get_distribution
