@@ -22,7 +22,7 @@ class Inline(Command):
     log = logging.getLogger(__name__)
     outfile: io.TextIOWrapper
     filenames = []
-    statement_regex = re.compile("(use|include) <[^>]+>")
+    statement_regex = re.compile("^[\t ]*(use|include) <[^>]+>")
 
     def get_parser(self, prog_name) -> ArgumentParser:
         """Set up and return the parser.
@@ -71,18 +71,19 @@ class Inline(Command):
 
         """
         basename = os.path.basename(filename)
-        if basename not in self.filenames:
-            self.log.debug(basename)
-            self.filenames.append(basename)
-            with open(filename, mode="r", encoding="utf-8") as infile:
-                self.log.debug("opening %s...", filename)
-                directory = os.path.dirname(filename)
-                for line in infile.readlines():
-                    incl_file = self.find_include_path(line, directory)
-                    if incl_file:
-                        self.scan_file(incl_file)
-                    else:
-                        self.outfile.write(line.rstrip() + "\n")
+        if basename in self.filenames:
+            self.log.warning("File %s is already included.", basename)
+            return
+        self.filenames.append(basename)
+        with open(filename, mode="r", encoding="utf-8") as infile:
+            self.log.debug("Parsing %s...", filename)
+            directory = os.path.dirname(filename)
+            for line in infile.readlines():
+                incl_file = self.find_include_path(line, directory)
+                if incl_file:
+                    self.scan_file(incl_file)
+                else:
+                    self.outfile.write(line.rstrip() + "\n")
 
     def take_action(self, parsed_args) -> int:
         """Perform action on file
@@ -104,6 +105,7 @@ class Inline(Command):
                 encoding="utf-8",
             ) as self.outfile:
                 self.scan_file(infile)
+                self.log.debug("Files included: %d", len(self.filenames))
                 return 0
         except (FileNotFoundError, TypeError) as ex:
             if isinstance(ex, FileNotFoundError):
