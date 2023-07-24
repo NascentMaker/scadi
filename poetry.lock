@@ -146,13 +146,13 @@ colorama = {version = "*", markers = "platform_system == \"Windows\""}
 
 [[package]]
 name = "cliff"
-version = "4.2.0"
+version = "4.3.0"
 description = "Command Line Interface Formulation Framework"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "cliff-4.2.0-py3-none-any.whl", hash = "sha256:5538a03299f40f83268ba102ed513c2a693ffeb6ac01de7cc119ae9cfc55e55d"},
-    {file = "cliff-4.2.0.tar.gz", hash = "sha256:97fc31e93552e3bec664be9d55ad7f90dc2ab42aad8df29a5b985b644c9b8cf2"},
+    {file = "cliff-4.3.0-py3-none-any.whl", hash = "sha256:db3dc8774f47db9aa86796921ff158d0f023630261c2746c4fff12584b75f5b2"},
+    {file = "cliff-4.3.0.tar.gz", hash = "sha256:fc5b6ebc8fb815332770b2485ee36c09753937c37cce4f3227cdd4e10b33eacc"},
 ]
 
 [package.dependencies]
