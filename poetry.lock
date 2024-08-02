@@ -146,19 +146,19 @@ colorama = {version = "*", markers = "platform_system == \"Windows\""}
 
 [[package]]
 name = "cliff"
-version = "4.2.0"
+version = "4.7.0"
 description = "Command Line Interface Formulation Framework"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "cliff-4.2.0-py3-none-any.whl", hash = "sha256:5538a03299f40f83268ba102ed513c2a693ffeb6ac01de7cc119ae9cfc55e55d"},
-    {file = "cliff-4.2.0.tar.gz", hash = "sha256:97fc31e93552e3bec664be9d55ad7f90dc2ab42aad8df29a5b985b644c9b8cf2"},
+    {file = "cliff-4.7.0-py3-none-any.whl", hash = "sha256:7c5ef733b364532775166bb980eb43108e264d145c1892ff1c51f9b4af417c24"},
+    {file = "cliff-4.7.0.tar.gz", hash = "sha256:6ca45f8df519bbc0722c61049de7b7e442a465fa7f3f552b96d735fa26fd5b26"},
 ]
 
 [package.dependencies]
 autopage = ">=0.4.0"
 cmd2 = ">=1.0.0"
-importlib-metadata = ">=4.4"
+importlib-metadata = {version = ">=4.4", markers = "python_version < \"3.10\""}
 PrettyTable = ">=0.7.2"
 PyYAML = ">=3.12"
 stevedore = ">=2.0.1"
