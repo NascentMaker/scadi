@@ -23,6 +23,12 @@ Usage
 
 The above command will create a file called ``./inline-my-model.scad`` that can be shared on sites that have OpenSCAD customizers.
 
+Known issues
+============
+
+* ``scadi`` currently does not support the ``OPENSCADPATH`` environment variable.
+* ``scadi`` does not support using ``use`` to circumvent the recursion limit of OpenSCAD. This affects BOSL2.
+
 License
 =======
 

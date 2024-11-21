@@ -105,7 +105,7 @@ def test_no_filename():
     assert cmd.run(parsed_args) == 1
 
 
-def test_bad_filename(base_dir):
+def test_bad_filename(base_dir, caplog):
     """Test with a file that does not exist
 
     :param base_dir PosixPath
@@ -116,3 +116,15 @@ def test_bad_filename(base_dir):
     filename = base_dir / "missing_file.scad"
     parsed_args = parser.parse_args([f"{filename}"])
     assert cmd.run(parsed_args) == 127
+    assert caplog.messages == ["No such file or directory."]
+
+
+def test_bosl2_use_statement(caplog):
+    """Test with an existing file that includes BOSL2."""
+    cmd = Inline(None, None, cmd_name="object action")
+    parser = cmd.get_parser("scadi")
+    filename = "tests/samples/hex-grid-bosl2.scad"
+    parser.add_argument("verbose", nargs="?", default=True)
+    parsed_args = parser.parse_args([f"{filename}"])
+    assert cmd.run(parsed_args) == 0
+    assert caplog.messages.count("File builtins.scad is already included.") == 2
